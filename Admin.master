@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+ 
+    <style type="text/css">
+        .nystyle
+        {
+            font-family: Calibri;
+        }
+        body
+        {
+            background-color: #f8f8f8;
+        }
+        
+        div#menu
+        {
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            background: transparent url(images/header_bg.gif) repeat-x 0 0;
+        }
+        
+        .style100
+        {
+            font-size: 25pt;
+            color: #276F83;
+            line-height: 50px;
+        }
+        
+        .style200
+        {
+            font-size: xx-large;
+        }
+        .style300
+        {
+            font-size: 25pt;
+            color: #5DB5CE;
+            line-height: 50px;
+        }
+    </style>
+    <script src="admin_css/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="admin_css/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="admin_css/css/font-awesome.css"/>
+    <link rel="stylesheet" href="admin_css/css/animate.css"/>
+    <link rel="stylesheet" href="admin_css/css/templatemo_misc.css"/>
+    <link rel="stylesheet" href="admin_css/css/templatemo_style.css" />
+    <script src="admin_css/js/vendor/jquery-1.11.0.min.js"></script>
+    <script src="admin_css/js/bootstrap.js"></script>
+    <script src="admin_css/js/plugins.js"></script>
+    <script src="admin_css/js/main.js"></script>
+    <link href="admin_css/menu.css" rel="stylesheet" type="text/css" />
+    <script src="admin_css/js/zoomsl-3.0.min.js"></script>
+    <script>
+        jQuery(function () {
+
+            // если отсутсвует zoomsl-3.0.min.js
+            if (!$.fn.imagezoomsl) {
+
+                $('.msg').show();
+                return;
+            }
+            else $('.msg').hide();
+
+
+            // инициализация плагина
+            $('.my-foto').imagezoomsl({
+
+                zoomrange: [1, 1.7],
+                zoomstart: 1.7,
+                innerzoom: true,
+                magnifierborder: "none"
+            });
+            $(".thumbicon img").click(function () {
+                var that = this;
+
+                $(".my-foto").fadeOut(600, function () {
+
+                    $(this).attr("src", $(that).attr("src"))
+				   .attr("data-large", $(that).attr("data-tmb-large"))
+				   .fadeIn(1000);
+                });
+
+                return false;
+            });
+
+        });
+    </script>
+    <script type="text/javascript" src="admin_css/menu.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div class="site-header">
+            <div class="container">
+                <div id="top_links">
+                    <div class="row">
+                        <div id="rightlinks">
+                            <ul class="col-md-12">
+                                <li><a href="#">Welcome </a></li>
+                                <li>
+                                    <asp:Label ID="Label1" runat="server" Text="Guest" ForeColor="Black"></asp:Label></li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click1" Visible="False"
+                                        CausesValidation="False">Login</asp:LinkButton>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click1" Visible="False"
+                                        CausesValidation="False">Log Out</asp:LinkButton>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click" Visible="False">Admin Home</asp:LinkButton>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.main-header -->
+                <div class="main-header">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-6 col-xs-10">
+                            <div class="logo">
+                               <a> <strong class="style2"><a href="Default.aspx"><span class="style300"></span><span
+                                    class="style100">Hotel</span></strong> </a>
+                            </div>
+                        </div>
+                        <!-- /.col-md-4 -->
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-12" id="menudrop">
+                            <div id="mainNav" style="background-color:Gray">
+                                <div id="menu">
+                                    <ul class="menu">
+                                        <li><a href="AdminPanel.aspx"><span>Home</span></a></li>
+                                        <li><a href="Adm_Category.aspx"><span>Category</span></a></li>                                        
+                                        <li><a href="Adm_SubCategory.aspx"><span>Sub-Category</span></a></li>
+                                        <li><a href="Adm_Room.aspx"><span>Room</span></a></li>
+                                        <li><a href="RoomStatus.aspx"><span>Order</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfloat">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.site-header -->
+        <div class="middle-content">
+            <div class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+                <div style="clear: both">
+                </div>
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.middle-content -->
+        <%--<div class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="footer-logo">
+                        </div>
+                    </div>
+                    <!-- /.col-md-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="copyright">
+                            <p>
+                                <span>Copyright &copy; 2015 <a href="Default.aspx">Amba Residency</a></span></p>
+                        </div>
+                    </div>
+                    <!-- /.col-md-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <ul class="social-icons">
+                            <li><a href="#!" class="fa fa-facebook"></a></li>
+                            <li><a href="#!" class="fa fa-twitter"></a></li>
+                            <li><a href="#!" class="fa fa-linkedin"></a></li>
+                            <li><a href="#!" class="fa fa-flickr"></a></li>
+                            <li><a href="#!" class="fa fa-rss"></a></li>
+                        </ul>
+                    </div>
+                    <!-- /.col-md-4 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>--%>
+        <!-- /.site-footer -->
+        <!-- templatemo 409 travel -->
+    </div>
+    </form>
+</body>
+</html>
